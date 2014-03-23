@@ -1,0 +1,68 @@
+.:. Protocolo (JSON) entre WebService e Aplicativos Móveis .:.
+
+ * Registro de dispositivo
+
+ Request (POST em /registrar):
+
+ {
+    "uid": "...uid",
+    "os": "ios | android"
+ }
+
+ Response:
+
+ {
+    "ans": "ok | nok"
+ }
+
+ * Envio de dados de velocidade
+
+ Request (POST em /traffic/send):
+
+ {
+    "uid": "...uid",
+    "os": "ios | android",
+    "velocity": ...numero em km/h,
+    "position": {
+        "x": ...posição x no grid,
+        "y": ...posição y no grid,
+    }
+ }
+
+Response:
+
+{
+    "ans": "ok | nok"
+}
+
+ * Requisição de dados de velocidade média
+
+ Request (POST em /traffic/status)
+ {
+    "i": { 
+        "x": ...posição x inicial,
+        "y": ...posição y inicial.
+    },
+    "f": {
+        "x": ...posição x final,
+        "y": ...posição y final
+    },
+    "scale": 1
+ }
+
+ Response
+ {
+    "ans": "ok | nok",
+    "time": "dd/MM/yyyy HH:mm:ss",
+    "data": [
+        {
+            "position": {
+                "x": ...posição x do grid,
+                "y": ...posição y do grid
+            },
+            "meanVelocity": ...velocidade média em km/h
+        },
+        ...
+    ]
+ }
+
